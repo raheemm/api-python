@@ -84,7 +84,7 @@ class Configuration:
         self.sub_url				   = config['version'];
         self.username				   = config['username'];
         self.password				   = config['key'];
-        self.secure_auth               = config['secure_auth'];
+        self.secure_auth               = True if config['secure_auth'] in ('True','true','1') else False;
         self.return_type 		       = config['return_type'];
         self.content_type			   = config['content_type'];
         self.transport_type            = config['transport_type'];

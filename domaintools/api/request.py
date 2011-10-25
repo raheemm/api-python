@@ -1,8 +1,9 @@
-from configuration import Configuration
+from   configuration import Configuration
 import hmac
 import hashlib
-from datetime      import datetime
-from ..exceptions  import ServiceUnavailableException
+from   datetime      import datetime
+from   ..exceptions  import ServiceUnavailableException
+from   ..exceptions  import NotAuthorizedException
 
 class Request:
 
@@ -52,19 +53,16 @@ class Request:
 
         self.options['api_username'] = api_username
 
-        if self.configuration.secure_auth:
+        if self.configuration.secure_auth == True:
             timestamp = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
 
-            uri       = '/' + self.configuration.sub_url
-            if self.domain_name.strip()=='':
-                uri   = uri + '/'
-            else:
-                uri   = uri + '/' + self.domain_name
-            uri       = uri + self.service_name
+            uri       = '/' + self.configuration.sub_url + ('/' if self.domain_name.strip()=='' else '/' + self.domain_name + '/') + self.service_name
 
             self.options['timestamp'] = timestamp
             params                    = ''.join([api_username, timestamp, uri])
             self.options['signature'] = hmac.new(api_key, params, digestmod=hashlib.sha1).hexdigest()
+        else:
+            self.options['api_key']   = api_key
 
     def get_service_name(self):
         return self.serice_name
@@ -91,10 +89,10 @@ class Request:
 
     def build_url(self):
         query_string = ''
-        for k, v in self.options.iteritems():
-            query_string = query_string + k + '=' + v + '&'
+        for k, v in self.options.iteritems(): query_string = query_string + k + '=' + v + '&'
+
         query_string = query_string.strip('& ')
-        self.url     = self.configuration.base_url + ('/' if self.domain_name.strip()=='' else '/' + self.domain_name + '/') + '?' + query_string
+        self.url     = self.configuration.base_url + ('/' if self.domain_name.strip()=='' else '/' + self.domain_name + '/') + self.service_name + '?' + query_string
 
 
     def execute(self, debug=0):
