@@ -1,8 +1,9 @@
 import unittest
 import os
-from domaintools.api.configuration import Configuration
-from domaintools.api.request       import Request
-from domaintools.exceptions        import ServiceException
+from   domaintools.api.configuration import Configuration
+from   domaintools.api.request       import Request
+from   domaintools.exceptions        import ServiceException
+from   mock                          import Mock
 
 class TestRequest(unittest.TestCase):
 
