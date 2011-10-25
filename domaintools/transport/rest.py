@@ -15,7 +15,7 @@ class RestService:
 
         connection = httplib.HTTPConnection(parts.netloc)
 
-        connection.request('GET',parts.path)
+        connection.request('GET',parts.path+'?'+parts.query)
 
         response = connection.getresponse()
 
