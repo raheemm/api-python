@@ -1,3 +1,16 @@
+class obj(object):
+    """
+    Turns a dictionary to object
+    http://stackoverflow.com/questions/1305532/convert-python-dict-to-object
+    http://stackoverflow.com/questions/4017572/how-can-i-make-an-alias-to-a-non-function-member-attribute-in-a-python-class
+    """
+    def __init__(self, d):
+        for a, b in d.items():
+            if isinstance(b, (list, tuple)):
+               setattr(self, a, [obj(x) if isinstance(x, dict) else x for x in b])
+            else:
+               setattr(self, a, obj(b) if isinstance(b, dict) else b)
+
 def load_config_file(filename):
     """
     Load a simple ini file

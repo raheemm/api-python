@@ -1,6 +1,8 @@
 from   configuration import Configuration
+from   response      import Response
 import hmac
 import hashlib
+import json
 from   datetime      import datetime
 from   ..exceptions  import ServiceUnavailableException
 from   ..exceptions  import NotAuthorizedException
@@ -17,11 +19,7 @@ class Request:
         self.options                 = {}
         self.domain_name             = ''
         self.raw_response            = None
-
-        if(configuration == None):
-            self.configuration = Configuration()
-        else:
-            self.configuration = configuration
+        self.configuration           = Configuration() if(configuration == None) else configuration
 
 
     def service(self, service_name=''):
@@ -90,31 +88,29 @@ class Request:
     def build_url(self):
         query_string = ''
         for k, v in self.options.iteritems(): query_string = query_string + k + '=' + v + '&'
-
         query_string = query_string.strip('& ')
+
         self.url     = self.configuration.base_url + ('/' if self.domain_name.strip()=='' else '/' + self.domain_name + '/') + self.service_name + '?' + query_string
 
 
-    def execute(self, debug=0):
+    def execute(self, debug=False):
         raw_response = ''
         self.build_options()
 
-        if self.return_type==None:
-            self.options['format'] = 'json'
+        if self.return_type == None: self.options['format'] = 'json'
 
         self.build_url()
 
-        if debug==1: return self.url
+        if debug==True: return self.url
 
         self.raw_response = self.request()
 
-        if self.return_type==None:
-            return Response(self, self.raw_response)
+        if self.return_type == None: return Response(self)
 
         return self.raw_response
 
     def debug(self):
-        return self.execute(1)
+        return self.execute(True)
 
     def request(self):
         transport = self.configuration.transport
