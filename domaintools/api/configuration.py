@@ -1,7 +1,7 @@
 import os
-from domaintools      import utils
-from ..exceptions     import ServiceException
-from ..transport.curl import CurlRestService
+from domaintools                import utils
+from domaintools.exceptions     import ServiceException
+from domaintools.transport.curl import CurlRestService
 
 class Configuration:
 
@@ -38,8 +38,10 @@ class Configuration:
             'curl'           : CurlRestService
         }
 
+        self.default_config_path = os.path.realpath(os.curdir)+'/domaintools/conf/api.ini'
+
         if(ini_resource == None):
-            ini_resource = os.path.realpath(os.curdir)+'/domaintools/conf/api.ini'
+            ini_resource = self.default_config_path
 
         config = {}
 
@@ -63,11 +65,10 @@ class Configuration:
         if config['key'].strip() == '':
             raise ServiceException(ServiceException.EMPTY_API_KEY)
 
-        #try:
-        #    transport = self.transport_map[config['transport_type']]()
-        #except Exception as e:
-            #print e
-        #    raise ServiceException(ServiceException.TRANSPORT_NOT_FOUND)
+        try:
+            transport = self.transport_map[config['transport_type']]()
+        except Exception as e:
+            config['transport_type'] = self.default_config['transport_type'];
 
         #if implements(transport, Transport) == 0:
         #    config['transport_type'] = self.default_config['transport_type'];

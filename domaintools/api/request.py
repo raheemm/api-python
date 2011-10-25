@@ -1,11 +1,10 @@
-from   configuration import Configuration
-from   response      import Response
+from   domaintools.api.configuration import Configuration
+from   domaintools.api.response      import Response
 import hmac
 import hashlib
-import json
-from   datetime      import datetime
-from   ..exceptions  import ServiceUnavailableException
-from   ..exceptions  import NotAuthorizedException
+from   datetime                      import datetime
+from   domaintools.exceptions        import ServiceUnavailableException
+from   domaintools.exceptions        import NotAuthorizedException
 
 class Request:
 

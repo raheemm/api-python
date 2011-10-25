@@ -1,7 +1,7 @@
 import httplib
 from urlparse import urlparse
 
-class RestService:
+class RestService(object):
 
     def __init__(self, content_type='json', options={}):
 

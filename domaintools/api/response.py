@@ -1,5 +1,5 @@
 import json
-from ..utils import obj
+from   domaintools.utils import obj
 
 class Response:
 
