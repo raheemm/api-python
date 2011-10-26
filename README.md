@@ -140,7 +140,7 @@ You can combine methods to specify return type, options, etc.:
 
 ```python
 
-print request.service('mark-alert').where(array("query" => "domaintools")).withType("xml").execute()
+print request.service('mark-alert').where({"query":"domaintools"}).withType("xml").execute()
 ```
 
 ### Choose service to call - service ###
@@ -154,10 +154,10 @@ You can find the list of available services on [domaintools.com](http://domainto
 ### Specify options - where ###
 
 ```python
-request.service("mark-alert").where(array("query" => "domain tools"))
+request.service("mark-alert").where({"query":"domain tools"})
 ```
 
-The method **where** allows to specify options of the service. It takes only on parameter, an array of options where the key is the name of the option and value is the value of the option.
+The method **where** allows to specify options of the service. It takes only on parameter, a dictionary of options where the key is the name of the option and value is the value of the option.
 
 The list of options for each service is available on the [domaintoolsAPI documentation](http://domaintools.com/api/docs/ "domaintoolsAPI documentation") .
 
