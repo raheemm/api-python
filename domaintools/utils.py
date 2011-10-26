@@ -1,3 +1,9 @@
+"""
+This file is part of the domaintoolsAPI_python_wrapper package.
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+"""
+
 class obj(object):
     """
     Turns a dictionary to object
