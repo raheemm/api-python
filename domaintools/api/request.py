@@ -3,6 +3,7 @@ from   domaintools.api.response      import Response
 import hmac
 import hashlib
 from   datetime                      import datetime
+from   domaintools.exceptions        import ServiceException
 from   domaintools.exceptions        import ServiceUnavailableException
 from   domaintools.exceptions        import NotAuthorizedException
 from   domaintools.exceptions        import InternalServerErrorException
@@ -16,7 +17,7 @@ For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 """
 
-class Request:
+class Request(object):
 
     def __init__(self, configuration=None):
         """

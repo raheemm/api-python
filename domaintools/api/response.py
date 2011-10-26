@@ -1,5 +1,5 @@
 import json
-from   domaintools.utils import obj
+from   domaintools.utils        import obj
 
 """
 This file is part of the domaintoolsAPI_php_wrapper package.
@@ -7,15 +7,12 @@ For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
 """
 
-class Response:
+class Response(object):
 
     def __init__(self, request=None):
         """
         Constructs the Response object
         """
-
-        #if isinstance(request, Request):
-        #    raise ServiceException(ServiceException.INVALID_REQUEST_OBJECT)
 
         #json string respresenting the response
         self.json       = None
