@@ -15,7 +15,7 @@ class ServiceException(Exception):
     INVALID_DOMAIN         = "Domain/Ip invalide";
     INVALID_OPTIONS        = "Invalid options; options must be an array";
 
-    TRANSPORT_NOT_FOUND    = "Transport not found; it must refer to a class that implements RESTServiceInterface";
+    TRANSPORT_NOT_FOUND    = "Transport not found; it must refer to a class that extends RESTService";
     DOMAIN_CALL_REQUIRED   = "Domain is required for this service";
     IP_CALL_REQUIRED       = "Ip address is required for this service";
     EMPTY_CALL_REQUIRED    = "No domain or ip is required for this service";
