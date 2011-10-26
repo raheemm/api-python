@@ -215,12 +215,37 @@ To call the service use the method **execute**, and return the response.
 
 The response is a string with the format of the specify return type (JSON or XML for example).
 
+## Tests with minimock ##
+
+Here is the procedure to test this API
+
+1- Install [Minimock](http://pypi.python.org/pypi/MiniMock)
+
+2- Go into the main directory containing **tests.py**
+
+2- Call all tests once (in console) :
+
+```python
+python tests.py
+```
+
+In **domaintools/tests/** are included all the tests classes. You should have a similar result :
+
+```python
+
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.004s
+
+OK
+```
+
 ## Changelog ##
 
 See the CHANGELOG.md file for details.
 
 ## License ##
 
-Copyright (C) 2011 by domaintools.com, DomaintoolsAPI PHP Wrapper is released under the MIT license.
+Copyright (C) 2011 by domaintools.com, DomaintoolsAPI PYTHON Wrapper is released under the MIT license.
 See the LICENSE.md file for details.
 
