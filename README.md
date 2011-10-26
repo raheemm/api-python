@@ -140,7 +140,7 @@ You can combine methods to specify return type, options, etc.:
 
 ```python
 
-print request.service('mark-alert').where(array("query" => "domaintools")).withType("xml").domain("domaintools.com").execute()
+print request.service('mark-alert').where(array("query" => "domaintools")).withType("xml").execute()
 ```
 
 ### Choose service to call - service ###
