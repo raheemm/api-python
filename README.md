@@ -184,7 +184,7 @@ With this response object, you will be able to access to response properties :
 
 ```python
 
-  response = request.service("whois").domain('domaintools.com').execute();
+  response = request.service("whois").domain('domaintools.com').execute()
 
   print response.registrant # Domaintools, LLC
 

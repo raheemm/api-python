@@ -5,6 +5,9 @@ import hashlib
 from   datetime                      import datetime
 from   domaintools.exceptions        import ServiceUnavailableException
 from   domaintools.exceptions        import NotAuthorizedException
+from   domaintools.exceptions        import InternalServerErrorException
+from   domaintools.exceptions        import NotFoundException
+from   domaintools.exceptions        import ServiceUnavailableException
 
 class Request:
 
@@ -34,8 +37,8 @@ class Request:
         return self
 
     def where(self, options):
-        if type(options) is not dict:
-            raise ServiceException(ServiceException.INVALID_OPTIONS)
+        if type(options) is not dict: raise ServiceException(ServiceException.INVALID_OPTIONS)
+        self.options = dict(options, **self.options)
         return self
 
 
