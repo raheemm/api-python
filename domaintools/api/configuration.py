@@ -3,6 +3,12 @@ from domaintools                import utils
 from domaintools.exceptions     import ServiceException
 from domaintools.transport.curl import CurlRestService
 
+"""
+This file is part of the domaintoolsAPI_php_wrapper package.
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+"""
+
 class Configuration:
 
     def __init__(self, ini_resource = None):
@@ -10,17 +16,41 @@ class Configuration:
         Construct the class
         Initiliaze it with default values (if no config given)
         """
+
+        #server host
         self.host                = None
+
+        #server port
         self.port                = None
+
+        #sub url (version)
         self.sub_url             = None
+
+        #beginning url
         self.base_url            = None
+
+        #domaintools API username
         self.username            = None
+
+        #domaintools API password
         self.password            = None
-        self.secure_path         = None
+
+        #secure authentication
+        self.secure_path         = True
+
+        #default return type
         self.return_type         = None
+
+        #transport type (curl, etc.)
         self.transport_type      = None
+
+        #transport object in charge of calling API
         self.transport           = None
-        self.default_config_path = None
+
+        #default configuration file path
+        self.default_config_path = os.path.realpath(os.curdir)+'/domaintools/conf/api.ini'
+
+        #default configuration
         self.default_config      = {
 
             'username'       : '',
@@ -34,14 +64,12 @@ class Configuration:
             'content_type'   : 'application/json'
         }
 
+        "dictionary to map the good transport class"
         self.transport_map = {
             'curl'           : CurlRestService
         }
 
-        self.default_config_path = os.path.realpath(os.curdir)+'/domaintools/conf/api.ini'
-
-        if(ini_resource == None):
-            ini_resource = self.default_config_path
+        if(ini_resource == None): ini_resource = self.default_config_path
 
         config = {}
 
@@ -70,14 +98,14 @@ class Configuration:
         except Exception as e:
             config['transport_type'] = self.default_config['transport_type'];
 
-        #if implements(transport, Transport) == 0:
-        #    config['transport_type'] = self.default_config['transport_type'];
-
         return config
 
 
     def init(self, config):
-
+        """
+        Initialize the configuration Object
+        Returns the configuration dictionary
+        """
         config                         = self.validateParams(config);
 
         self.host 	                   = config['host'];
