@@ -13,7 +13,7 @@ class TestResponse(unittest.TestCase):
         """to execute before each test"""
 
         self.root_path     = os.path.realpath(os.curdir)
-        self.configuration = Configuration(self.root_path+'/domaintools/conf/api.ini')
+        self.configuration = Configuration(self.root_path+'/api.ini')
         self.request       = Request(self.configuration)
 
         self.request.domain('domaintools.com')

@@ -48,7 +48,7 @@ class Configuration(object):
         self.transport           = None
 
         #default configuration file path
-        self.default_config_path = os.path.realpath(os.curdir)+'/domaintools/conf/api.ini'
+        self.default_config_path = os.path.realpath(os.curdir)+'/api.ini'
 
         #default configuration
         self.default_config      = {

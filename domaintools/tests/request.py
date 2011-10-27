@@ -21,7 +21,7 @@ class TestRequest(unittest.TestCase):
     def test_transport_called_on_get(self):
         """test transport is really called"""
 
-        configuration = Configuration(self.root_path + "/domaintools/conf/api.ini")
+        configuration = Configuration(self.root_path + "/api.ini")
         request       = Request(configuration)
         request.withType('json').domain('domaintools.com')
 
@@ -63,7 +63,7 @@ class TestRequest(unittest.TestCase):
     def test_add_credentials_for_unsecure_authentication(self):
         """check username and key are really added to options"""
 
-        config = load_config_file(self.root_path+'/domaintools/conf/api.ini')
+        config = load_config_file(self.root_path+'/api.ini')
         configuration = Configuration(config)
         configuration.secure_auth = False
 
