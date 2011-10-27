@@ -20,7 +20,7 @@ class TestResponse(unittest.TestCase):
 
         transport                         = Mock('RestService')
         transport.get_status.mock_returns = 200
-        transport.get.mock_returns        = open(self.root_path + '/domaintools/tests/fixtures/domain-profile/domaintools.com/good.json').read()
+        transport.get.mock_returns        = open(self.root_path + '/tests/fixtures/domain-profile/domaintools.com/good.json').read()
         self.request.set_transport(transport)
 
         self.response                     = self.request.execute()
@@ -47,7 +47,7 @@ class TestResponse(unittest.TestCase):
 
         transport                         = Mock('RestService')
         transport.get_status.mock_returns = 200
-        transport.get.mock_returns        = open(self.root_path + '/domaintools/tests/fixtures/domain-profile/domaintools.com/good.xml').read()
+        transport.get.mock_returns        = open(self.root_path + '/tests/fixtures/domain-profile/domaintools.com/good.xml').read()
         self.request.set_transport(transport)
 
         xml = self.request.execute()
@@ -61,7 +61,7 @@ class TestResponse(unittest.TestCase):
 
         transport                         = Mock('RestService')
         transport.get_status.mock_returns = 200
-        transport.get.mock_returns        = open(self.root_path + '/domaintools/tests/fixtures/domain-profile/domaintools.com/good.html').read()
+        transport.get.mock_returns        = open(self.root_path + '/tests/fixtures/domain-profile/domaintools.com/good.html').read()
         self.request.set_transport(transport)
 
         html = self.request.execute()

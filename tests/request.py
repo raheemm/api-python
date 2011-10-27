@@ -27,7 +27,7 @@ class TestRequest(unittest.TestCase):
 
         transport                         = Mock('RestService')
         transport.get_status.mock_returns = 200
-        transport.get.mock_returns        = open(self.root_path + '/domaintools/tests/fixtures/domain-profile/domaintools.com/good.json').read()
+        transport.get.mock_returns        = open(self.root_path + '/tests/fixtures/domain-profile/domaintools.com/good.json').read()
         request.set_transport(transport)
 
         try:
@@ -45,7 +45,7 @@ class TestRequest(unittest.TestCase):
 
         transport                         = Mock('RestService')
         transport.get_status.mock_returns = 200
-        transport.get.mock_returns        = open(self.root_path + '/domaintools/tests/fixtures/domain-profile/domaintools.com/good.json').read()
+        transport.get.mock_returns        = open(self.root_path + '/tests/fixtures/domain-profile/domaintools.com/good.json').read()
         request.set_transport(transport)
 
         self.assertTrue(json.loads(request.execute())!= None)
@@ -82,7 +82,7 @@ class TestRequest(unittest.TestCase):
 
         transport                         = Mock('RestService')
         transport.get_status.mock_returns = 403
-        transport.get.mock_returns        = open(self.root_path + '/domaintools/tests/fixtures/domain-profile/domaintools.com/good.json').read()
+        transport.get.mock_returns        = open(self.root_path + '/tests/fixtures/domain-profile/domaintools.com/good.json').read()
         request.set_transport(transport)
 
         try:
@@ -97,7 +97,7 @@ class TestRequest(unittest.TestCase):
 
             transport                         = Mock('RestService')
             transport.get_status.mock_returns = 400
-            transport.get.mock_returns        = open(self.root_path + '/domaintools/tests/fixtures/domain-profile/domaintools.com/good.json').read()
+            transport.get.mock_returns        = open(self.root_path + '/tests/fixtures/domain-profile/domaintools.com/good.json').read()
             request.set_transport(transport)
 
             try:
@@ -113,7 +113,7 @@ class TestRequest(unittest.TestCase):
 
             transport                         = Mock('RestService')
             transport.get_status.mock_returns = 404
-            transport.get.mock_returns        = open(self.root_path + '/domaintools/tests/fixtures/domain-profile/domaintools.com/good.json').read()
+            transport.get.mock_returns        = open(self.root_path + '/tests/fixtures/domain-profile/domaintools.com/good.json').read()
             request.set_transport(transport)
 
             try:
@@ -129,7 +129,7 @@ class TestRequest(unittest.TestCase):
 
         transport                         = Mock('RestService')
         transport.get_status.mock_returns = 500
-        transport.get.mock_returns        = open(self.root_path + '/domaintools/tests/fixtures/domain-profile/domaintools.com/good.json').read()
+        transport.get.mock_returns        = open(self.root_path + '/tests/fixtures/domain-profile/domaintools.com/good.json').read()
         request.set_transport(transport)
 
         try:
@@ -145,7 +145,7 @@ class TestRequest(unittest.TestCase):
 
         transport                         = Mock('RestService')
         transport.get_status.mock_returns = 503
-        transport.get.mock_returns        = open(self.root_path + '/domaintools/tests/fixtures/domain-profile/domaintools.com/good.json').read()
+        transport.get.mock_returns        = open(self.root_path + '/tests/fixtures/domain-profile/domaintools.com/good.json').read()
         request.set_transport(transport)
 
         try:
