@@ -10,7 +10,7 @@ The domaintoolsAPI PYTHON Wrapper is a simple connector to access all webservice
 
     $ git clone git://github.com/DomainTools/api-python
 
-2- Rename the **api.ini.default** to **api.ini**
+2- In domaintools/conf/, rename the **api.ini.default** to **api.ini**
 
 3- Fill **api.ini**  with your domaintools credentials:
 
@@ -126,6 +126,16 @@ The domaintoolsAPI PYTHON Wrapper is a simple connector to access all webservice
 ```
 5- Read the documentation to learn more, and visit [domaintools.com](http://domaintools.com "domaintools.com") to know the list of available services.
 
+## Quick examples ##
+
+In the main directory, you shoud have some examples to quickly test the API :
+
+```
+python 1-my-first-call-to-api.py
+python 2-different-calls-for-same-result.py
+
+```
+
 ## Documentation ##
 
 The domaintoolsAPI PYTHON Wrapper is a fluent API implemented by using method chaining.
@@ -214,6 +224,7 @@ With this response object, you will be able to choose your return format :
 To call the service use the method **execute**, and return the response.
 
 The response is a string with the format of the specify return type (JSON or XML for example).
+
 
 ## Tests with minimock ##
 

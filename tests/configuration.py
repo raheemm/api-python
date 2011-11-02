@@ -7,7 +7,7 @@ class TestConfiguration(unittest.TestCase):
 
     def test_default_config_called_if_none_given(self):
 
-        default_config_path = os.path.realpath(os.curdir) + "/api.ini"
+        default_config_path = os.path.realpath(os.path.dirname(__file__)+'/../domaintools/conf/api.ini')
         configuration              = Configuration();
         self.assertTrue(default_config_path==configuration.default_config_path);
 

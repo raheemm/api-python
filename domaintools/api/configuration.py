@@ -48,7 +48,7 @@ class Configuration(object):
         self.transport           = None
 
         #default configuration file path
-        self.default_config_path = os.path.realpath(os.curdir)+'/api.ini'
+        self.default_config_path = os.path.realpath(os.path.dirname(__file__)+'/../conf/api.ini')
 
         #default configuration
         self.default_config      = {
@@ -64,7 +64,7 @@ class Configuration(object):
             'content_type'   : 'application/json'
         }
 
-        "dictionary to map the good transport class"
+        #dictionary to map the good transport class
         self.transport_map = {
             'curl'           : CurlRestService
         }
