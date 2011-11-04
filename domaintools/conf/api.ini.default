@@ -11,5 +11,5 @@ version        = v1
 secure_auth    = true
 return_type    = json
 transport_type = curl
-content_type   = application/json'
+content_type   = application/json
 
