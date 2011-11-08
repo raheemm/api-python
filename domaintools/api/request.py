@@ -2,6 +2,7 @@ from   domaintools.api.configuration import Configuration
 from   domaintools.api.response      import Response
 import hmac
 import hashlib
+import urllib
 from   datetime                      import datetime
 from   domaintools.exceptions        import ServiceException
 from   domaintools.exceptions        import ServiceUnavailableException
@@ -139,7 +140,7 @@ class Request(object):
     def build_url(self):
         """Depending on the service name, and the options we built the good url to request"""
 
-        query_string = '&'.join('%s=%s' % (k, v) for (k, v) in self.options.iteritems())
+        query_string = urllib.urlencode(self.options)
 
         self.url     = self.configuration.base_url + ('/' if self.domain_name.strip()=='' else '/' + self.domain_name + '/') + self.service_name + '?' + query_string
 
@@ -171,7 +172,8 @@ class Request(object):
         else returns an exception.
         """
         transport = self.configuration.transport
-        response=''
+        response  = ''
+
         try:
             response = transport.get(self.url)
         except Exception as e:
