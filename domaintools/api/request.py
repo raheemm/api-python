@@ -139,9 +139,7 @@ class Request(object):
     def build_url(self):
         """Depending on the service name, and the options we built the good url to request"""
 
-        query_string = ''
-        for k, v in self.options.iteritems(): query_string = query_string + k + '=' + v + '&'
-        query_string = query_string.strip('& ')
+        query_string = '&'.join('%s=%s' % (k, v) for (k, v) in self.options.iteritems())
 
         self.url     = self.configuration.base_url + ('/' if self.domain_name.strip()=='' else '/' + self.domain_name + '/') + self.service_name + '?' + query_string
 
