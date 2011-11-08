@@ -69,10 +69,13 @@ class Request(object):
         return self
 
     def where(self, options):
-        """This function allows you to specify an options dictionary"""
+        """
+        This function allows you to specify an options dictionary
+        The current options dictionary is merged with a new one
+        """
 
         if type(options) is not dict: raise ServiceException(ServiceException.INVALID_OPTIONS)
-        self.options = dict(options, **self.options)
+        self.options.update(options)
         return self
 
 
