@@ -55,26 +55,3 @@ class Response(object):
             except AttributeError:
                 return None
 
-    def toJson(self, refresh=False):
-        """Force "json" as render type and execute the request"""
-
-        if refresh==True:
-            json = self.request.withType('json').execute()
-            self.mergeJson(json)
-        return self.json
-
-
-    def toObject(self):
-        """
-        Converts the Json to an object
-        """
-        return obj(json.loads(self.json))
-
-    def toXml(self):
-        """Force "xml" as render type and execute the request"""
-        return self.request.withType('xml').execute()
-
-    def toHtml(self):
-        """Force "html" as render type and execute the request"""
-        return self.request.withType('html').execute()
-

@@ -86,6 +86,21 @@ class Request(object):
         return self.where({'query':query})
 
 
+    def toJson(self):
+        """Alias for self.withType('json')"""
+
+        return self.withType('json')
+
+    def toXml(self):
+        """Alias for self.withType('xml')"""
+
+        return self.withType('xml')
+
+    def toHtml(self):
+        """Alias for self.withType('html')"""
+
+        return self.withType('html')
+
     def add_credentials_options(self):
         """Add credentials to the Options dictionary (if necessary)."""
 

@@ -180,6 +180,16 @@ The method **withType** allows to specify the return type of the response. It ta
 
 The list of return types is available on the [domaintoolsAPI documentation](http://domaintools.com/api/docs/ "domaintoolsAPI documentation").
 
+You can also use **toJson**, **toXml** and **toHtml** as aliases of withType :
+
+```python
+
+  print request.service("whois").domain('domaintools.com').toJson().execute() # json
+  print request.service("whois").domain('domaintools.com').toXml().execute()  # xml
+  print request.service("whois").domain('domaintools.com').toHtml().execute() # html
+
+```
+
 ### If no return type, a Response object is returned ###
 
 By default (If you don't call the method withType) the return type used is  a **Response** object:
@@ -202,17 +212,6 @@ With this response object, you will be able to access to response properties :
 
 ```
 
-With this response object, you will be able to choose your return format :
-
-```python
-
-  response = request.service("whois").domain('domaintools.com').execute()
-
-  print response.toJson()
-  print respone.toXml()
-  print response.toHtml()
-
-```
 ### Call the service - execute ###
 
 ```python

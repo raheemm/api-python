@@ -153,3 +153,20 @@ class TestRequest(unittest.TestCase):
         except ServiceUnavailableException as e:
             self.assertTrue(True)
 
+    def test_toJson_sets_json_as_returnType(self):
+        """ check toJson sets json as returnType"""
+        request = Request().toJson()
+        self.assertTrue(request.get_return_type() == 'json')
+
+    def test_toXml_sets_xml_as_returnType(self):
+        """ check toXml sets xml as returnType"""
+
+        request = Request().toXml()
+        self.assertTrue(request.get_return_type() == 'xml')
+
+    def test_toHtml_sets_html_as_returnType(self):
+        """ check toHtml sets html as returnType"""
+
+        request = Request().toHtml()
+        self.assertTrue(request.get_return_type() == 'html')
+
