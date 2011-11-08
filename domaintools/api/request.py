@@ -177,8 +177,7 @@ class Request(object):
         try:
             response = transport.get(self.url)
         except Exception as e:
-            print e
-            #raise ServiceUnavailableException()
+            raise ServiceUnavailableException()
 
         status = transport.get_status()
 
